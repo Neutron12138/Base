@@ -42,7 +42,7 @@ int main()
     // 尝试添加空对象
     try
     {
-        root->add_child(base::TreeNodeRef());
+        //root->add_child(base::TreeNodeRef());
     }
     catch (const std::exception &e)
     {
