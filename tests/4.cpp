@@ -3,6 +3,16 @@
 
 int main()
 {
+    try
+    {
+        base::read_from_file("");
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << std::endl
+                  << std::endl;
+    }
+
     std::cout << base::read_from_file("1.txt") << std::endl
               << std::endl;
 
@@ -53,6 +63,16 @@ int main()
     base::PixelRGB *pixels = reinterpret_cast<base::PixelRGB *>(data);
     std::cout << pixels[0] << ", " << pixels[1] << std::endl;
     image->save_as_png("wall_2.png");
+    std::cout << std::endl;
+
+    try
+    {
+        image->save_as_png("");
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
     return 0;
 }

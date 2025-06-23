@@ -1,4 +1,5 @@
 #include <iostream>
+#define BASE_NO_IMPL
 #include "../base/base.hpp"
 
 class Base : public base::ReferenceObject
