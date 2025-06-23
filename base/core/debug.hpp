@@ -13,7 +13,7 @@ namespace base
     /// @param function 函数名
     /// @param line 行号
     /// @return 转化后的字符串
-    std::string str_debug_info(const char *file, const char *function, int line)
+    std::string str_debug_info(std::string_view file, std::string_view function, int line)
     {
         return to_string(
             "in file: \"", file,
@@ -27,8 +27,8 @@ namespace base
     /// @param function 函数名
     /// @param line 行号
     /// @return 转化后的字符串
-    std::string str_debug_info(const void *object, const char *file,
-                               const char *function, int line)
+    std::string str_debug_info(const void *object,
+                               std::string_view file, std::string_view function, int line)
     {
         return to_string(
             "(object@", object,
