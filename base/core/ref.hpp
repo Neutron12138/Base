@@ -30,4 +30,9 @@ namespace base
     template <typename T>
     using RefWrapper = std::reference_wrapper<T>;
 
+    /// @brief 任意对象的引用，不是std::any的引用
+    using AnyRef = Ref<void>;
+    /// @brief 任意对象的弱引用，不是std::any的弱引用
+    using AnyWeakRef = WeakRef<void>;
+
 } // namespace base

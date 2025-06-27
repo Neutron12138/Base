@@ -11,10 +11,10 @@ namespace base
     using MethodBaseWeakRef = WeakRef<MethodBase>;
 
     /// @brief 方法基类
-    class MethodBase : public PolymorphicObject
+    class MethodBase : public MetaBase
     {
     public:
-        MethodBase() = default;
+        MethodBase(bool is_const) : MetaBase(is_const) {}
         ~MethodBase() override = default;
 
     public:
@@ -23,6 +23,12 @@ namespace base
         /// @param args 参数列表
         /// @return 返回值
         virtual std::any invoke(void *object, const std::any &args) const = 0;
+
+        /// @brief 调用方法
+        /// @param object 对象
+        /// @param args 参数列表
+        /// @return 返回值
+        virtual std::any invoke(const void *object, const std::any &args) const = 0;
     };
 
 } // namespace base

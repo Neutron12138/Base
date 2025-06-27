@@ -52,11 +52,25 @@
 #include "image/base_image.hpp"
 #include "image/fast_image.hpp"
 
-// reflection
+// meta
 
+#include "meta/meta_base.hpp"
 #include "meta/field_base.hpp"
 #include "meta/method_base.hpp"
-#include "meta/field.hpp"
-#include "meta/method.hpp"
+#include "meta/global_field.hpp"
+#include "meta/global_method.hpp"
 #include "meta/member_field.hpp"
 #include "meta/member_method.hpp"
+#include "meta/member_field_offset.hpp"
+
+// reflection
+
+#include "reflection/class_info.hpp"
+#include "reflection/class_info_base_register.hpp"
+#include "reflection/class_info_register.hpp"
+#include "reflection/dynamic_class_info_register.hpp"
+#include "reflection/class_db.hpp"
+
+#ifndef BASE_NO_IMPL
+#include "reflection/class_info.cpp"
+#endif

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <any>
-#include "../core/ref.hpp"
-#include "../core/polymorphic_object.hpp"
+#include "meta_base.hpp"
 
 namespace base
 {
@@ -11,10 +9,10 @@ namespace base
     using FieldBaseWeakRef = WeakRef<FieldBase>;
 
     /// @brief 属性基类
-    class FieldBase : public PolymorphicObject
+    class FieldBase : public MetaBase
     {
     public:
-        FieldBase() = default;
+        FieldBase(bool is_const) : MetaBase(is_const) {}
         ~FieldBase() override = default;
 
     public:
@@ -22,6 +20,11 @@ namespace base
         /// @param object 对象
         /// @return 结果
         virtual std::any get(void *object) const = 0;
+
+        /// @brief 获取属性
+        /// @param object 对象
+        /// @return 结果
+        virtual std::any get(const void *object) const = 0;
 
         /// @brief 设置属性
         /// @param object 对象

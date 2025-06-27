@@ -23,22 +23,22 @@ namespace base
         using Class = C;
         using ArgsTuple = std::tuple<T...>;
         using Ptr = Ret (Class::*)(T...);
-        using PtrConst = Ret (Class::*)(T...) const;
+        using ConstPtr = Ret (Class::*)(T...) const;
 
     private:
-        /// @brief 非const方法指针
-        Ptr m_ptr;
-        /// @brief const方法指针
-        PtrConst m_ptr_const;
+        /// @brief 指针
+        Ptr m_ptr = nullptr;
+        /// @brief const指针
+        ConstPtr m_const_ptr = nullptr;
 
     public:
-        MemberMethod(Ptr ptr) : m_ptr(ptr) {}
-        MemberMethod(PtrConst ptr_const) : m_ptr_const(ptr_const) {}
+        MemberMethod(Ptr ptr) : MethodBase(false), m_ptr(ptr) {}
+        MemberMethod(ConstPtr ptr) : MethodBase(true), m_const_ptr(ptr) {}
         ~MemberMethod() override = default;
 
     public:
         Ptr get_ptr() const { return m_ptr; }
-        PtrConst get_ptr_const() const { return m_ptr_const; }
+        ConstPtr get_const_ptr() const { return m_const_ptr; }
 
     public:
         std::any invoke(void *object, const std::any &args) const override
@@ -46,12 +46,37 @@ namespace base
             auto tuple = std::any_cast<ArgsTuple>(args);
             auto impl = [this, object](auto... args) -> Ret
             {
-                if (m_ptr)
-                    return std::invoke(m_ptr, reinterpret_cast<Class *>(object), args...);
+                if (is_const())
+                    return std::invoke(m_const_ptr, reinterpret_cast<Class *>(object), args...);
                 else
-                    return std::invoke(m_ptr_const, reinterpret_cast<Class *>(object), args...);
+                    return std::invoke(m_ptr, reinterpret_cast<Class *>(object), args...);
             };
 
+            return invoke_impl(impl, tuple);
+        }
+
+        std::any invoke(const void *object, const std::any &args) const override
+        {
+            auto tuple = std::any_cast<ArgsTuple>(args);
+            auto impl = [this, object](auto... args) -> Ret
+            {
+                if (is_const())
+                    return std::invoke(m_const_ptr, reinterpret_cast<const Class *>(object), args...);
+                else
+                    throw BASE_MAKE_RUNTIME_ERROR("Cannot call a non-const method, pointer: ", m_ptr);
+            };
+
+            return invoke_impl(impl, tuple);
+        }
+
+        /// @brief 具体实现
+        /// @tparam ImplT 实现函数类型
+        /// @param impl 实现函数
+        /// @param tuple 参数元组
+        /// @return 返回值
+        template <typename ImplT>
+        std::any invoke_impl(ImplT impl, const ArgsTuple &tuple) const
+        {
             if constexpr (std::is_void_v<Ret>)
             {
                 std::apply(impl, tuple);
