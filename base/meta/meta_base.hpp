@@ -24,7 +24,7 @@ namespace base
         ~MetaBase() override = default;
 
     public:
-        bool is_const() const { return m_is_const; }
+        inline bool is_const() const { return m_is_const; }
     };
 
 } // namespace base

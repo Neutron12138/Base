@@ -32,7 +32,7 @@ namespace base
         ~GlobalMethod() override = default;
 
     public:
-        Ptr get_ptr() const { return m_ptr; }
+        inline Ptr get_ptr() const { return m_ptr; }
 
     public:
         std::any invoke(void *, const std::any &args) const override { return invoke_impl(args); }

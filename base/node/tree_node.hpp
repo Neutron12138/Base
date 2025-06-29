@@ -50,9 +50,9 @@ namespace base
         virtual void _on_exit_tree(const NodeTreeRef &tree) {}
 
     public:
-        bool is_in_tree() const { return !m_tree.expired(); }
-        const NodeTreeWeakRef &get_tree() const { return m_tree; }
-        bool is_ready() const { return m_is_ready; }
+        inline bool is_in_tree() const { return !m_tree.expired(); }
+        inline const NodeTreeWeakRef &get_tree() const { return m_tree; }
+        inline bool is_ready() const { return m_is_ready; }
 
     protected:
         /// @brief 递归设置根节点

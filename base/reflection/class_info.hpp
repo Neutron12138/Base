@@ -53,32 +53,32 @@ namespace base
         ~ClassInfo() override = default;
 
     public:
-        const BaseClassArray &get_base_classes() const { return m_base_classes; }
-        const FieldDict &get_field_dict() const { return m_field_dict; }
-        const MethodDict &get_method_dict() const { return m_method_dict; }
-        const Constructor &get_constructor() const { return m_constructor; }
-        const Destructor &get_destructor() const { return m_destructor; }
-        void set_constructor(const Constructor &constructor) { m_constructor = constructor; }
-        void set_destructor(const Destructor &destructor) { m_destructor = destructor; }
+        inline const BaseClassArray &get_base_classes() const { return m_base_classes; }
+        inline const FieldDict &get_field_dict() const { return m_field_dict; }
+        inline const MethodDict &get_method_dict() const { return m_method_dict; }
+        inline const Constructor &get_constructor() const { return m_constructor; }
+        inline const Destructor &get_destructor() const { return m_destructor; }
+        inline void set_constructor(const Constructor &constructor) { m_constructor = constructor; }
+        inline void set_destructor(const Destructor &destructor) { m_destructor = destructor; }
 
     protected:
-        void _set_base_class(const ClassInfoRef &base_class)
+        inline void _set_base_class(const ClassInfoRef &base_class)
         {
             m_base_classes = base_class->m_base_classes;
             m_base_classes.push_back(base_class);
         }
 
-        void _add_base_class(const ClassInfoRef &base_class)
+        inline void _add_base_class(const ClassInfoRef &base_class)
         {
             m_base_classes.push_back(base_class);
         }
 
-        void _add_field(const std::string &name, const FieldBaseRef &field)
+        inline void _add_field(const std::string &name, const FieldBaseRef &field)
         {
             m_field_dict[name] = field;
         }
 
-        void _add_method(const std::string &name, const MethodBaseRef &method)
+        inline void _add_method(const std::string &name, const MethodBaseRef &method)
         {
             m_method_dict[name] = method;
         }

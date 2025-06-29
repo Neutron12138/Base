@@ -53,25 +53,25 @@ namespace base
         ~Logger() override = default;
 
     public:
-        const std::stringstream &get_log_stream() const { return m_log_stream; }
-        void set_standard_output_enabled(bool enabled) { m_is_standard_output_enabled = enabled; }
-        bool is_standard_output_enabled() const { return m_is_standard_output_enabled; }
-        void set_extra_ostream_enabled(bool enabled) { m_is_extra_ostream_enabled = enabled; }
-        bool is_extra_ostream_enabled() const { return m_is_extra_ostream_enabled; }
-        const OStreamArray &get_extra_ostreams() const { return m_extra_ostreams; }
+        inline const std::stringstream &get_log_stream() const { return m_log_stream; }
+        inline void set_standard_output_enabled(bool enabled) { m_is_standard_output_enabled = enabled; }
+        inline bool is_standard_output_enabled() const { return m_is_standard_output_enabled; }
+        inline void set_extra_ostream_enabled(bool enabled) { m_is_extra_ostream_enabled = enabled; }
+        inline bool is_extra_ostream_enabled() const { return m_is_extra_ostream_enabled; }
+        inline const OStreamArray &get_extra_ostreams() const { return m_extra_ostreams; }
 
     protected:
-        void _clear_extra_ostreams() { m_extra_ostreams.clear(); }
-        void _add_extra_ostream(const OStreamRefWrapper &ostream) { m_extra_ostreams.push_back(ostream); }
-        void _remove_extra_ostream(const OStreamConstIterator &iter) { m_extra_ostreams.erase(iter); }
+        inline void _clear_extra_ostreams() { m_extra_ostreams.clear(); }
+        inline void _add_extra_ostream(const OStreamRefWrapper &ostream) { m_extra_ostreams.push_back(ostream); }
+        inline void _remove_extra_ostream(const OStreamConstIterator &iter) { m_extra_ostreams.erase(iter); }
 
         /// @brief 输出日志
         /// @param content 日志内容
         virtual void _output_log(const std::string &content);
 
     public:
-        void add_extra_ostream(const OStreamRefWrapper &ostream) { _add_extra_ostream(ostream); }
-        void clear_extra_ostreams() { _clear_extra_ostreams(); }
+        inline void add_extra_ostream(const OStreamRefWrapper &ostream) { _add_extra_ostream(ostream); }
+        inline void clear_extra_ostreams() { _clear_extra_ostreams(); }
 
     public:
         /// @brief 输出Unknown日志

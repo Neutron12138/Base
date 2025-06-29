@@ -20,10 +20,10 @@ namespace base
         ~ClassDB() = default;
 
     public:
-        const ClassInfoDict &get_class_info_dict() const { return m_class_info_dict; }
+        inline const ClassInfoDict &get_class_info_dict() const { return m_class_info_dict; }
 
     public:
-        void register_class(const std::string &name, const ClassInfoRef &class_info)
+        inline void register_class(const std::string &name, const ClassInfoRef &class_info)
         {
             m_class_info_dict[name] = class_info;
         }

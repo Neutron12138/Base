@@ -24,10 +24,10 @@ namespace base
 
         /// @brief 直接设置对象名
         /// @param name 对象名
-        void _set_name(const std::string &name) { m_name = name; }
+        inline void _set_name(const std::string &name) { m_name = name; }
 
     public:
-        const std::string &get_name() const { return m_name; }
+        inline const std::string &get_name() const { return m_name; }
 
         virtual void set_name(const std::string &new_name)
         {

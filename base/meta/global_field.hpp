@@ -33,16 +33,16 @@ namespace base
         ~GlobalField() override = default;
 
     public:
-        Ptr get_ptr() const { return m_ptr; }
-        ConstPtr get_const_ptr() const { return m_const_ptr; }
+        inline Ptr get_ptr() const { return m_ptr; }
+        inline ConstPtr get_const_ptr() const { return m_const_ptr; }
 
     public:
-        std::any get(void *) const override { return get_impl(); }
-        std::any get(const void *) const override { return get_impl(); }
+        inline std::any get(void *) const override { return get_impl(); }
+        inline std::any get(const void *) const override { return get_impl(); }
 
         /// @brief 具体实现
         /// @return 返回值
-        std::any get_impl() const
+        inline std::any get_impl() const
         {
             if (is_const())
                 return *m_const_ptr;

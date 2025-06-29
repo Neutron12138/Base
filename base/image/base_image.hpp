@@ -63,9 +63,9 @@ namespace base
         ~BaseImage() override = default;
 
     public:
-        Size get_width() const { return m_width; }
-        Size get_height() const { return m_height; }
-        Format get_format() const { return m_format; }
+        inline Size get_width() const { return m_width; }
+        inline Size get_height() const { return m_height; }
+        inline Format get_format() const { return m_format; }
 
         /// @brief 获取原始像素数据（UInt8）
         /// @return 原始像素数据
@@ -74,15 +74,15 @@ namespace base
     protected:
         /// @brief 设置图像宽度
         /// @param width 图像宽度
-        void _set_width(Size width) { m_width = width; }
+        inline void _set_width(Size width) { m_width = width; }
 
         /// @brief 设置图像高度
         /// @param height 图像高度
-        void _set_height(Size height) { m_height = height; }
+        inline void _set_height(Size height) { m_height = height; }
 
         /// @brief 设置图像格式
         /// @param format 图像格式
-        void _set_channels(Format format) { m_format = format; }
+        inline void _set_channels(Format format) { m_format = format; }
 
     public:
         /// @brief 将图像保存为PNG格式

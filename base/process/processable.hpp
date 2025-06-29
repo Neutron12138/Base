@@ -51,14 +51,14 @@ namespace base
         virtual void _physics_process(double delta) = 0;
 
     public:
-        void set_process_mode(ProcessMode mode) { m_process_mode = mode; }
-        ProcessMode get_process_mode() const { return m_process_mode; }
-        void set_process_manager(const ProcessManagerWeakRef &process_manager) { m_process_manager = process_manager; }
-        const ProcessManagerWeakRef &get_process_manager() const { return m_process_manager; }
-        void set_process(bool enabled) { m_is_process_enabled = enabled; }
-        bool is_process_enabled() const { return m_is_process_enabled; }
-        void set_physics_process(bool enabled) { m_is_physics_process_enabled = enabled; }
-        bool is_physics_process_enabled() const { return m_is_physics_process_enabled; }
+        inline void set_process_mode(ProcessMode mode) { m_process_mode = mode; }
+        inline ProcessMode get_process_mode() const { return m_process_mode; }
+        inline void set_process_manager(const ProcessManagerWeakRef &process_manager) { m_process_manager = process_manager; }
+        inline const ProcessManagerWeakRef &get_process_manager() const { return m_process_manager; }
+        inline void set_process(bool enabled) { m_is_process_enabled = enabled; }
+        inline bool is_process_enabled() const { return m_is_process_enabled; }
+        inline void set_physics_process(bool enabled) { m_is_physics_process_enabled = enabled; }
+        inline bool is_physics_process_enabled() const { return m_is_physics_process_enabled; }
 
     public:
         /// @brief 根据process_mode与paused判断是否需要处理

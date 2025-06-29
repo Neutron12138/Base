@@ -21,8 +21,8 @@ namespace base
         ~Event() override = default;
 
     public:
-        bool is_handled() const { return m_handled; }
-        void set_handled() { m_handled = true; }
+        inline bool is_handled() const { return m_handled; }
+        inline void set_handled() { m_handled = true; }
 
     public:
         /// @brief 获取事件类型

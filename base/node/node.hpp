@@ -50,12 +50,12 @@ namespace base
         virtual void _on_detached_from_parent(const NodeRef &old_parent) {}
 
     public:
-        bool is_child() const { return !m_parent.expired(); }
-        bool is_root() const { return m_root.lock().get() == this; }
-        bool has_children() const { return !m_children.empty(); }
-        const NodeWeakRef &get_parent() const { return m_parent; }
-        const NodeArray &get_children() const { return m_children; }
-        const NodeWeakRef &get_root() const { return m_root; }
+        inline bool is_child() const { return !m_parent.expired(); }
+        inline bool is_root() const { return m_root.lock().get() == this; }
+        inline bool has_children() const { return !m_children.empty(); }
+        inline const NodeWeakRef &get_parent() const { return m_parent; }
+        inline const NodeArray &get_children() const { return m_children; }
+        inline const NodeWeakRef &get_root() const { return m_root; }
 
     protected:
         /// @brief 连接子节点

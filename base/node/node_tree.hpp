@@ -55,8 +55,8 @@ namespace base
         virtual void _on_finalize() {}
 
     public:
-        const TreeNodeRef &get_root() const { return m_root; }
-        Status get_status() const { return m_status; }
+        inline const TreeNodeRef &get_root() const { return m_root; }
+        inline Status get_status() const { return m_status; }
 
     protected:
         /// @brief 强行设为根节点

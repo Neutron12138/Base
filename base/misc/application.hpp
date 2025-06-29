@@ -43,18 +43,18 @@ namespace base
         virtual void _on_shutdown() = 0;
 
     public:
-        Status get_status() const { return m_status; }
-        void set_exit_code(Int32 exit_code = EXIT_FAILURE) { m_exit_code = exit_code; }
-        Int32 get_exit_code() const { return m_exit_code; }
+        inline Status get_status() const { return m_status; }
+        inline void set_exit_code(Int32 exit_code = EXIT_FAILURE) { m_exit_code = exit_code; }
+        inline Int32 get_exit_code() const { return m_exit_code; }
 
     protected:
         /// @brief 设置当前状态
         /// @param status 目标状态
-        void _set_status(Status status) { m_status = status; }
+        inline void _set_status(Status status) { m_status = status; }
 
     public:
         /// @brief 请求退出
-        virtual void request_quit()
+        inline virtual void request_quit()
         {
             if (m_status != Status::Terminated)
                 m_status = Status::ShuttingDown;

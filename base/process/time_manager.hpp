@@ -31,15 +31,15 @@ namespace base
         ~TimeManager() override = default;
 
     public:
-        const TimePoint &get_start_time() const { return m_start_time; }
+        inline const TimePoint &get_start_time() const { return m_start_time; }
 
     public:
         /// @brief 获取自start_time以来总共经过的时间
         /// @return 经过的时间（秒）
-        double get_total_elapsed() const { return Duration(get_current_time() - m_start_time).count(); }
+        inline double get_total_elapsed() const { return Duration(get_current_time() - m_start_time).count(); }
 
         /// @brief 重新开始计时
-        virtual void restart() { m_start_time = get_current_time(); }
+        inline virtual void restart() { m_start_time = get_current_time(); }
     };
 
 } // namespace base

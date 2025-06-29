@@ -37,8 +37,8 @@ namespace base
         ~MemberMethod() override = default;
 
     public:
-        Ptr get_ptr() const { return m_ptr; }
-        ConstPtr get_const_ptr() const { return m_const_ptr; }
+        inline Ptr get_ptr() const { return m_ptr; }
+        inline ConstPtr get_const_ptr() const { return m_const_ptr; }
 
     public:
         std::any invoke(void *object, const std::any &args) const override

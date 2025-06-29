@@ -19,13 +19,13 @@ namespace base
 
     public:
         template <typename T>
-        void register_dynamic_field(const std::string &name, Size offset, bool is_const)
+        inline void register_dynamic_field(const std::string &name, Size offset, bool is_const)
         {
             _add_field(name, std::make_shared<MemberFieldOffset<T>>(offset, is_const));
         }
 
         template <typename R, typename... T>
-        void register_dynamic_method(const std::string &name, R (*ptr)(void *, T...))
+        inline void register_dynamic_method(const std::string &name, R (*ptr)(void *, T...))
         {
             _add_method(name, std::make_shared<GlobalMethod<R, void *, T...>>(ptr));
         }

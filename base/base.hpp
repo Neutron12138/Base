@@ -1,5 +1,10 @@
 #pragma once
 
+// C++版本必须在C++17以上
+#if __cplusplus < 201703L
+#error The C++ version is too low, at least it should be C++ 17
+#endif
+
 // core
 
 #include "core.hpp"
@@ -12,9 +17,7 @@
 #include "misc/named_object.hpp"
 #include "misc/logger.hpp"
 
-#ifndef BASE_NO_IMPL
 #include "misc/logger.cpp"
-#endif
 
 // event
 
@@ -27,11 +30,9 @@
 #include "node/tree_node.hpp"
 #include "node/node_tree.hpp"
 
-#ifndef BASE_NO_IMPL
 #include "node/node.cpp"
 #include "node/tree_node.cpp"
 #include "node/node_tree.cpp"
-#endif
 
 // process
 
@@ -40,11 +41,9 @@
 #include "process/processable.hpp"
 #include "process/process_manager.hpp"
 
-#ifndef BASE_NO_IMPL
 #include "process/frame_manager.cpp"
 #include "process/processable.cpp"
 #include "process/process_manager.cpp"
-#endif
 
 // image
 
@@ -71,6 +70,4 @@
 #include "reflection/dynamic_class_info_register.hpp"
 #include "reflection/class_db.hpp"
 
-#ifndef BASE_NO_IMPL
 #include "reflection/class_info.cpp"
-#endif

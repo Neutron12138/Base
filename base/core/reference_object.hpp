@@ -12,7 +12,7 @@ namespace base
 
     /// @brief 引用对象，必须用std::shared_ptr创建
     class ReferenceObject : virtual public PolymorphicObject,
-                            public std::enable_shared_from_this<ReferenceObject>
+                                     public std::enable_shared_from_this<ReferenceObject>
     {
     protected:
         ReferenceObject() = default;

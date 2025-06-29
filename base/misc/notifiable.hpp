@@ -26,7 +26,7 @@ namespace base
     /// @brief 通知一个对象
     /// @param notifiable 待通知对象
     /// @param what 具体通知
-    void notify(const NotifiableRef &notifiable, Int64 what)
+    inline void notify(const NotifiableRef &notifiable, Int64 what)
     {
         notifiable->notification(what);
     }

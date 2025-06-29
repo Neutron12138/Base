@@ -35,11 +35,11 @@ namespace base
         virtual void _on_frame_updated(double delta) {}
 
     public:
-        const TimePoint &get_last_update_time() const { return m_last_update_time; }
-        double get_update_interval() const { return m_update_interval; }
-        void set_update_interval(double update_interval) { m_update_interval = update_interval; }
-        double get_last_update_delta() const { return m_last_update_delta; }
-        Size get_frame_count() const { return m_frame_count; }
+        inline const TimePoint &get_last_update_time() const { return m_last_update_time; }
+        inline double get_update_interval() const { return m_update_interval; }
+        inline void set_update_interval(double update_interval) { m_update_interval = update_interval; }
+        inline double get_last_update_delta() const { return m_last_update_delta; }
+        inline Size get_frame_count() const { return m_frame_count; }
 
     protected:
         /// @brief 增加一帧
@@ -48,22 +48,22 @@ namespace base
     public:
         /// @brief 获取当前帧率
         /// @return 当前帧率
-        FPS get_current_fps() const { return static_cast<FPS>(1.0 / m_last_update_delta); }
+        inline FPS get_current_fps() const { return static_cast<FPS>(1.0 / m_last_update_delta); }
 
         /// @brief 获取目标帧率
         /// @return 目标帧率
-        FPS get_target_fps() const { return static_cast<FPS>(1.0 / m_update_interval); }
+        inline FPS get_target_fps() const { return static_cast<FPS>(1.0 / m_update_interval); }
 
         /// @brief 设置目标帧率
         /// @param target_fps 目标帧率
-        void set_target_fps(FPS target_fps) { m_update_interval = 1.0 / static_cast<double>(target_fps); }
+        inline void set_target_fps(FPS target_fps) { m_update_interval = 1.0 / static_cast<double>(target_fps); }
 
         /// @brief 关闭帧率限制
-        void set_unlimited_fps() { m_update_interval = 0.0; }
+        inline void set_unlimited_fps() { m_update_interval = 0.0; }
 
         /// @brief 获取距离上一帧所经过的时间
         /// @return 距离上一帧经过的时间
-        double get_update_delta() const { return Duration(get_current_time() - m_last_update_time).count(); }
+        inline double get_update_delta() const { return Duration(get_current_time() - m_last_update_time).count(); }
 
         /// @brief 请求第一帧
         virtual void request_first_frame();

@@ -29,15 +29,15 @@ namespace base
         ~MemberFieldOffset() override = default;
 
     public:
-        Size get_offset() const { return m_offset; }
+        inline Size get_offset() const { return m_offset; }
 
     public:
-        std::any get(void *object) const override
+        inline std::any get(void *object) const override
         {
             return *reinterpret_cast<T *>((char *)object + m_offset);
         }
 
-        std::any get(const void *object) const override
+        inline std::any get(const void *object) const override
         {
             return *reinterpret_cast<const T *>((const char *)object + m_offset);
         }

@@ -35,11 +35,11 @@ namespace base
         ~MemberField() override = default;
 
     public:
-        Ptr get_ptr() const { return m_ptr; }
-        ConstPtr get_const_ptr() const { return m_const_ptr; }
+        inline Ptr get_ptr() const { return m_ptr; }
+        inline ConstPtr get_const_ptr() const { return m_const_ptr; }
 
     public:
-        std::any get(void *object) const override
+        inline std::any get(void *object) const override
         {
             if (is_const())
                 return reinterpret_cast<Class *>(object)->*m_const_ptr;
@@ -47,7 +47,7 @@ namespace base
                 return reinterpret_cast<Class *>(object)->*m_ptr;
         }
 
-        std::any get(const void *object) const override
+        inline std::any get(const void *object) const override
         {
             if (is_const())
                 return reinterpret_cast<const Class *>(object)->*m_const_ptr;

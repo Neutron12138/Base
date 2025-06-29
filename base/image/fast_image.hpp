@@ -47,8 +47,8 @@ namespace base
         ~FastImage() override = default;
 
     public:
-        const UInt8 *get_raw_pixels() const override { return m_pixels.get(); }
-        Int64 get_resource_type() const override { return static_cast<Int64>(ResourceType::FastImage); }
+        inline const UInt8 *get_raw_pixels() const override { return m_pixels.get(); }
+        inline Int64 get_resource_type() const override { return static_cast<Int64>(ResourceType::FastImage); }
 
     protected:
         void _set_width(Size) = delete;
