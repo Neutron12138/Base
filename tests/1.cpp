@@ -19,5 +19,8 @@ int main()
               << base::read_string_from_file("1.txt") << std::endl
               << std::endl;
 
+    base::Logger logger;
+    logger.logi("successfully output log");
+
     return 0;
 }
