@@ -29,12 +29,9 @@ namespace base
         if (!fin)
             throw BASE_MAKE_RUNTIME_ERROR("Failed to open file: \"", filename, "\"");
 
-        std::string result = std::string(
+        return std::string(
             std::istreambuf_iterator<char>(fin),
             std::istreambuf_iterator<char>());
-        fin.close();
-
-        return result;
     }
 
 } // namespace base

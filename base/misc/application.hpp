@@ -23,10 +23,10 @@ namespace base
 
     protected:
         /// @brief 当程序初始化时
-        virtual void _on_initialize() {}
+        virtual void _initialize() {}
 
         /// @brief 当程序结束时
-        virtual void _on_finalize() {}
+        virtual void _finalize() {}
 
     public:
         inline void set_exit_code(Int32 exit_code = EXIT_FAILURE) { m_exit_code = exit_code; }
@@ -40,13 +40,23 @@ namespace base
 
     public:
         /// @brief 请求退出
-        virtual void request_quit()
-        {
-            m_is_should_quit = true;
-        }
+        virtual void request_quit() { m_is_should_quit = true; }
 
-        /// @brief 运行逻辑
-        virtual void run() = 0;
+        /// @brief 运行程序
+        /// @param argc 参数数量
+        /// @param argv 参数数组
+        virtual void run(int argc, char *argv[]) { run(std::vector<std::string>(argv, argv + argc)); }
+
+        /// @brief 运行程序
+        /// @param args 参数数组
+        virtual void run(const std::vector<std::string> &args) { run(); }
+
+        /// @brief 运行程序
+        virtual void run()
+        {
+            _initialize();
+            _finalize();
+        }
     };
 
 } // namespace base

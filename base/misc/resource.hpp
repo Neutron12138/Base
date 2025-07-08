@@ -21,6 +21,10 @@ namespace base
         /// @brief 获取资源类型
         /// @return 资源类型枚举
         inline virtual Int64 get_resource_type() const = 0;
+
+        /// @brief 检查资源是否有效
+        /// @return 资源是否有效
+        inline virtual bool is_valid() const = 0;
     };
 
 } // namespace base
