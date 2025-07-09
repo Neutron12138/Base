@@ -1,9 +1,6 @@
 #pragma once
 
-// C++版本必须在C++17以上
-#if __cplusplus < 201703L
-#error The C++ version is too low, at least it should be C++ 17
-#endif
+#include "version.hpp"
 
 #include "core/type.hpp"
 #include "core/ref.hpp"
