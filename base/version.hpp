@@ -21,8 +21,8 @@
 #if BASE_CPP_VERSION < 11
 #error "The C++ version is too low, at least it should be C++ 11"
 #elif BASE_CPP_VERSION < 17
-#warning "The C++version is relatively low and some functions cannot be used"
-#pragma message "Recommend using C++17"
+#warning "The C++ version is relatively low and some functions cannot be used"
+#pragma message "Recommend using C++ 17"
 #endif
 
 // 是否支持某个C++版本
