@@ -19,40 +19,36 @@ namespace base
 
     public:
         inline Application() = default;
-        inline ~Application() override = default;
+        inline ~Application() noexcept override = default;
 
     protected:
         /// @brief 当程序初始化时
-        virtual void _initialize() {}
+        inline virtual void _initialize() {}
 
         /// @brief 当程序结束时
-        virtual void _finalize() {}
+        inline virtual void _finalize() {}
 
     public:
-        inline void set_exit_code(Int32 exit_code = EXIT_FAILURE) { m_exit_code = exit_code; }
-        inline Int32 get_exit_code() const { return m_exit_code; }
-        inline bool is_should_quit() const { return m_is_should_quit; }
-
-    protected:
-        /// @brief 设置是否应该退出
-        /// @param is_should_quit 是否应该退出
-        inline void _set_is_should_quit(bool is_should_quit) { m_is_should_quit = is_should_quit; }
+        inline void set_exit_code(Int32 exit_code = EXIT_FAILURE) noexcept { m_exit_code = exit_code; }
+        inline Int32 get_exit_code() const noexcept { return m_exit_code; }
+        inline void set_is_should_quit(bool is_should_quit) noexcept { m_is_should_quit = is_should_quit; }
+        inline bool is_should_quit() const noexcept { return m_is_should_quit; }
 
     public:
         /// @brief 请求退出
-        virtual void request_quit() { m_is_should_quit = true; }
+        inline virtual void request_quit() { m_is_should_quit = true; }
 
         /// @brief 运行程序
         /// @param argc 参数数量
         /// @param argv 参数数组
-        virtual void run(int argc, char *argv[]) { run(std::vector<std::string>(argv, argv + argc)); }
+        inline virtual void run(int argc, char *argv[]) { run(std::vector<std::string>(argv, argv + argc)); }
 
         /// @brief 运行程序
         /// @param args 参数数组
-        virtual void run(const std::vector<std::string> &args) { run(); }
+        inline virtual void run(const std::vector<std::string> &args) { run(); }
 
         /// @brief 运行程序
-        virtual void run()
+        inline virtual void run()
         {
             _initialize();
             _finalize();

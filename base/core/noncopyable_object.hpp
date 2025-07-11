@@ -7,7 +7,7 @@ namespace base
     {
     public:
         inline NoncopyableObject() = default;
-        inline ~NoncopyableObject() = default;
+        inline ~NoncopyableObject() noexcept = default;
 
     public:
         NoncopyableObject(const NoncopyableObject &) = delete;

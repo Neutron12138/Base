@@ -12,12 +12,12 @@ namespace base
     {
     public:
         inline PrintableObject() = default;
-        inline ~PrintableObject() override = default;
+        inline ~PrintableObject() noexcept override = default;
 
     public:
         /// @brief 转换成字符串
         /// @return 转换后的字符串
-        virtual std::string to_string() const
+        inline virtual std::string to_string() const
         {
             return ::base::to_string("PrintableObject@", this);
         }
