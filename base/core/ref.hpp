@@ -23,8 +23,9 @@ namespace base
 
     /// @brief 独占引用，同std::unique_ptr
     /// @tparam T 对象类型
-    template <typename T>
-    using UniqueRef = std::unique_ptr<T>;
+    /// @tparam D 删除器类型
+    template <typename T, typename D = std::default_delete<T>>
+    using UniqueRef = std::unique_ptr<T, D>;
 
     /// @brief 引用包装器，同std::reference_wrapper
     /// @tparam T 对象类型
