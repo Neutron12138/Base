@@ -75,6 +75,12 @@ protected:
                   << base::read_string_from_file("1.txt") << std::endl
                   << std::endl;
 
+        auto buffer = base::read_bytes_from_file("1.txt");
+        std::cout << "read bytes from \"1.txt\":" << std::endl
+                  << "buffer size: " << buffer.size() << std::endl
+                  << std::string(buffer.begin(), buffer.end()) << std::endl
+                  << std::endl;
+
         auto dur = time.get_current_time().time_since_epoch();
         std::cout << base::SystemTime::Duration(dur).count() << std::endl
                   << std::endl;
