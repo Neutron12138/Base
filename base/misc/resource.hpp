@@ -17,6 +17,7 @@ namespace base
     public:
         inline Resource() = default;
         inline ~Resource() noexcept override = default;
+        BASE_DELETE_COPY_FUNCTION(Resource);
 
     public:
         /// @brief 获取资源类型

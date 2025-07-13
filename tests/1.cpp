@@ -53,6 +53,8 @@ private:
         std::cout << "base::get_or_error<B>(b1): " << base::get_or_error<B>(b1) << std::endl;
         static_assert(std::is_same_v<base::Ref<const B>, decltype(base::get_or_error<B>(b2))>);
         std::cout << "base::get_or_error<B>(b2): " << base::get_or_error<B>(b2) << std::endl;
+
+        std::cout << std::endl;
     }
 
 protected:
@@ -82,6 +84,9 @@ protected:
                   << std::endl;
 
         _test_polymorphic();
+
+        base::NoncopyableObject no;
+        // no = {};
     }
 };
 

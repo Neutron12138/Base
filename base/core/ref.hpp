@@ -3,10 +3,11 @@
 #include <memory>
 #include <functional>
 
-#define BASE_DECLARE_REF_TYPE(class_name)            \
-    class class_name;                                \
-    using class_name##Ref = ::base::Ref<class_name>; \
-    using class_name##WeakRef = ::base::WeakRef<class_name>;
+#define BASE_DECLARE_REF_TYPE(class_name)                    \
+    class class_name;                                        \
+    using class_name##Ref = ::base::Ref<class_name>;         \
+    using class_name##WeakRef = ::base::WeakRef<class_name>; \
+    using class_name##UniqueRef = ::base::UniqueRef<class_name>;
 
 namespace base
 {

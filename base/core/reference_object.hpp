@@ -4,14 +4,18 @@
 
 namespace base
 {
-    BASE_DECLARE_REF_TYPE(ReferenceObject);
+    class ReferenceObject;
+    using ReferenceObjectRef = Ref<ReferenceObject>;
+    using ReferenceObjectWeakRef = WeakRef<ReferenceObject>;
 
     /// @brief 引用对象，必须用std::shared_ptr创建
     class ReferenceObject : virtual public PolymorphicObject,
                             public std::enable_shared_from_this<ReferenceObject>
     {
-    public:
+    protected:
         inline ReferenceObject() = default;
+
+    public:
         inline ~ReferenceObject() noexcept override = default;
 
     public:
