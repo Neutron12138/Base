@@ -19,7 +19,7 @@ namespace base
         /// @return 转换后的字符串
         inline virtual std::string to_string() const
         {
-            return ::base::to_string("PrintableObject@", this);
+            return base::to_string("PrintableObject@", this);
         }
     };
 

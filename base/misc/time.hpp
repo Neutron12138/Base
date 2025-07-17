@@ -4,7 +4,7 @@
 
 namespace base
 {
-    /// @brief 时间
+    /// @brief 时间工具类
     /// @tparam ClockType 时钟类型
     template <typename ClockType>
     class Time
@@ -12,14 +12,14 @@ namespace base
     public:
         /// @brief 时钟
         using Clock = ClockType;
-        /// @brief 时间点
-        using TimePoint = typename Clock::time_point;
         /// @brief 时间段
         using Duration = std::chrono::duration<double>;
+        /// @brief 时间点
+        using TimePoint = std::chrono::time_point<Clock, Duration>;
 
-        /// @brief 获取当前时间
+        /// @brief 获取当前时间，单位：秒
         /// @return 当前时间
-        static inline TimePoint get_current_time() { return Clock::now(); }
+        static inline TimePoint get_current_time() { return static_cast<TimePoint>(Clock::now()); }
 
     public:
         inline Time() = default;

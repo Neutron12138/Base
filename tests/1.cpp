@@ -81,18 +81,16 @@ protected:
                   << std::string(buffer.begin(), buffer.end()) << std::endl
                   << std::endl;
 
-        auto dur = time.get_current_time().time_since_epoch();
-        std::cout << base::SystemTime::Duration(dur).count() << std::endl
-                  << std::endl;
-
         std::cout << "sizeof(base::PolymorphicObject): " << sizeof(base::PolymorphicObject) << std::endl
                   << "sizeof(base::ReferenceObject): " << sizeof(base::ReferenceObject) << std::endl
                   << std::endl;
 
+        auto beg = base::SteadyTime::get_current_time();
         _test_polymorphic();
-
-        base::NoncopyableObject no;
-        // no = {};
+        auto end = base::SteadyTime::get_current_time();
+        auto elapse = end - beg;
+        std::cout << elapse.count() << std::endl
+                  << std::endl;
     }
 };
 
