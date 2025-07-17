@@ -55,7 +55,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    T *get_if(U *ptr) noexcept
+    inline T *get_if(U *ptr) noexcept
     {
         static_assert(std::is_base_of_v<PolymorphicObject, T>,
                       "The target type is not derived from PolymorphicObject");
@@ -68,7 +68,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    const T *get_if(const U *ptr) noexcept
+    inline const T *get_if(const U *ptr) noexcept
     {
         static_assert(std::is_base_of_v<PolymorphicObject, T>,
                       "The target type is not derived from PolymorphicObject");
@@ -81,7 +81,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    T *get_or_error(U *ptr)
+    inline T *get_or_error(U *ptr)
     {
         static_assert(std::is_base_of_v<PolymorphicObject, T>,
                       "The target type is not derived from PolymorphicObject");
@@ -99,7 +99,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    const T *get_or_error(const U *ptr)
+    inline const T *get_or_error(const U *ptr)
     {
         static_assert(std::is_base_of_v<PolymorphicObject, T>,
                       "The target type is not derived from PolymorphicObject");

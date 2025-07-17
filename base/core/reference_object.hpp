@@ -48,7 +48,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    Ref<T> get_if(const Ref<U> &ptr) noexcept
+    inline Ref<T> get_if(const Ref<U> &ptr) noexcept
     {
         static_assert(std::is_base_of_v<ReferenceObject, T>,
                       "The target type is not derived from ReferenceObject");
@@ -61,7 +61,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    Ref<const T> get_if(const Ref<const U> &ptr) noexcept
+    inline Ref<const T> get_if(const Ref<const U> &ptr) noexcept
     {
         static_assert(std::is_base_of_v<ReferenceObject, T>,
                       "The target type is not derived from ReferenceObject");
@@ -74,7 +74,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    Ref<T> get_or_error(const Ref<U> &ptr)
+    inline Ref<T> get_or_error(const Ref<U> &ptr)
     {
         static_assert(std::is_base_of_v<ReferenceObject, T>,
                       "The target type is not derived from ReferenceObject");
@@ -92,7 +92,7 @@ namespace base
     /// @param ptr 指针
     /// @return 转换后指针
     template <typename T, typename U>
-    Ref<const T> get_or_error(const Ref<const U> &ptr)
+    inline Ref<const T> get_or_error(const Ref<const U> &ptr)
     {
         static_assert(std::is_base_of_v<ReferenceObject, T>,
                       "The target type is not derived from ReferenceObject");

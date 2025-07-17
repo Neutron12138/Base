@@ -12,8 +12,6 @@ namespace base
     public:
         inline NoncopyableObject() = default;
         inline ~NoncopyableObject() noexcept = default;
-
-    public:
         BASE_DELETE_COPY_FUNCTION(NoncopyableObject);
     };
 

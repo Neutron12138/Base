@@ -27,7 +27,7 @@ namespace base
 
     public:
         inline const std::string &get_name() const { return m_name; }
-        void set_name(const std::string &new_name)
+        inline void set_name(const std::string &new_name)
         {
             if (m_name == new_name)
                 return;

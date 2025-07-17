@@ -23,7 +23,7 @@ namespace base
         }
     };
 
-    std::ostream &operator<<(std::ostream &os, const PrintableObject &printable)
+    inline std::ostream &operator<<(std::ostream &os, const PrintableObject &printable)
     {
         os << printable.to_string();
         return os;
