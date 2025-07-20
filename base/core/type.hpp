@@ -22,8 +22,16 @@ namespace base
     /// @brief 64位无符号整数
     using UInt64 = std::uint64_t;
 
+    /// @brief 布尔类型
+    using Bool = bool;
+    /// @brief 字节类型
+    using Byte = UInt8;
     /// @brief 大小类型
     using Size = std::size_t;
+    /// @brief 整数指针类型
+    using IntPtr = std::intptr_t;
+    /// @brief 无符号整数指针类型
+    using UIntPtr = std::uintptr_t;
 
 #ifdef BASE_DEFINE_FLOAT_TYPE
     /// @brief 32位浮点数
