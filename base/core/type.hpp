@@ -31,6 +31,7 @@ namespace base
     /// @brief 64位浮点数
     using Float64 = double;
 #if __SIZEOF_LONG_DOUBLE__ == 16
+#define BASE_TYPE_HAS_FLOAT_128
     /// @brief 128位浮点数
     using Float128 = long double;
 #endif

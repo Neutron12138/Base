@@ -2,7 +2,7 @@
 
 #include <string>
 #include <sstream>
-#include <string_view>
+#include "print.hpp"
 
 namespace base
 {
@@ -23,14 +23,14 @@ namespace base
     inline std::string to_string(long double value) { return std::to_string(value); }
 
     /// @brief 将一串参数转换成字符串
-    /// @tparam ...Ts 参数类型
+    /// @tparam ...Ts 参数类型列表
     /// @param ...args 参数
     /// @return 转换后的字符串
     template <typename... Ts>
     std::string to_string(Ts &&...args)
     {
         std::ostringstream oss;
-        (oss << ... << std::forward<Ts>(args));
+        print_to(oss, std::forward<Ts>(args)...);
         return oss.str();
     }
 

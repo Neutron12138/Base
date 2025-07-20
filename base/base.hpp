@@ -5,6 +5,7 @@
 #include "core/type.hpp"
 #include "core/ref.hpp"
 
+#include "core/print.hpp"
 #include "core/to_string.hpp"
 #include "core/debug.hpp"
 #include "core/exception.hpp"
