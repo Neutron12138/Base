@@ -11,6 +11,15 @@ struct B : public base::ReferenceObject
 
 int main()
 {
+    base::print_line("size of PolymorphicObject: ", sizeof(base::PolymorphicObject));
+    base::print_line("size of ReferenceObject: ", sizeof(base::ReferenceObject));
+    base::print_line();
+
+    base::print_line("steady time: ", base::SteadyTime::get_current_time().time_since_epoch().count());
+    base::print_line("system time: ", base::SystemTime::get_current_time().time_since_epoch().count());
+    base::print_line("high resolution time: ", base::HighResolutionTime::get_current_time().time_since_epoch().count());
+    base::print_line();
+
     A a1;
     const A a2;
 
@@ -58,6 +67,16 @@ int main()
 
     auto end2 = base::SteadyTime::get_current_time();
     base::print_line("(auto pointer) total time: ", (end2 - begin2).count(), " seconds");
+
+    base::print_line();
+    try
+    {
+        base::get_or_error<B>(&a1);
+    }
+    catch (const std::exception &e)
+    {
+        base::print_line(e.what());
+    }
 
     return 0;
 }
