@@ -49,13 +49,13 @@ namespace base
     template <typename... Ts>
     inline std::logic_error make_invalid_argument_error(const std::string &debug_info, Ts &&...args)
     {
-        return std::invalid_argument(format_exception_message(debug_info, std::forward<Ts>(args)...));
+        return std::invalid_argument(format_exception_message(debug_info, "(invalid argument) ", std::forward<Ts>(args)...));
     }
 
     template <typename... Ts>
     inline std::logic_error make_out_of_range_error(const std::string &debug_info, Ts &&...args)
     {
-        return std::out_of_range(format_exception_message(debug_info, std::forward<Ts>(args)...));
+        return std::out_of_range(format_exception_message(debug_info, "(out of range) ", std::forward<Ts>(args)...));
     }
 
 } // namespace base
