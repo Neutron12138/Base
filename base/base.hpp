@@ -10,6 +10,7 @@
 
 #include "misc/print.hpp"
 #include "misc/time.hpp"
+#include "misc/read_from_file.hpp"
 #include "misc/noncopyable_object.hpp"
 #include "misc/polymorphic_object.hpp"
 #include "misc/reference_object.hpp"

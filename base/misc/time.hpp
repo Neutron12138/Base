@@ -5,13 +5,13 @@
 namespace base
 {
     /// @brief 基础时间类
-    /// @tparam ClockType 时钟类型
-    template <typename ClockType>
+    /// @tparam ClockT 时钟类型
+    template <typename ClockT>
     class Time
     {
     public:
         /// @brief 时钟
-        using Clock = ClockType;
+        using Clock = ClockT;
         /// @brief 时间段
         using Duration = std::chrono::duration<double>;
         /// @brief 时间点
@@ -19,7 +19,7 @@ namespace base
 
         /// @brief 获取当前时间，单位：秒
         /// @return 当前时间
-        static inline TimePoint get_current_time() noexcept { return static_cast<TimePoint>(Clock::now()); }
+        static inline TimePoint get_current_time() { return std::chrono::time_point_cast<Duration>(Clock::now()); }
 
     public:
         inline Time() = default;
@@ -33,27 +33,12 @@ namespace base
     /// @brief 高精度时间
     using HighResolutionTime = Time<std::chrono::high_resolution_clock>;
 
-    /// @brief 全局时间类，使用std::chrono::steady_clock
-    class GlobalTime : public SteadyTime
+    /// @brief 获取自第一次调用以来经过的时间，单位：秒
+    /// @return 自第一次调用以来经过的时间
+    inline double get_elapsed_seconds()
     {
-    public:
-        static GlobalTime &get_instance()
-        {
-            static GlobalTime instance;
-            return instance;
-        }
-
-    private:
-        /// @brief 程序开始时间
-        TimePoint m_start_time = get_current_time();
-
-    private:
-        inline GlobalTime() = default;
-        inline ~GlobalTime() noexcept = default;
-
-    public:
-        const TimePoint get_start_time() const noexcept { return m_start_time; }
-        const Duration get_time_elapsed() const noexcept { return get_current_time() - m_start_time; }
-    };
+        static const auto first_call_time = SteadyTime::get_current_time();
+        return (SteadyTime::get_current_time() - first_call_time).count();
+    }
 
 } // namespace base

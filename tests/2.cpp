@@ -15,17 +15,8 @@ void test_catch_exception();
 
 int main()
 {
-    auto &time = base::GlobalTime::get_instance();
-    base::print_line("program startup time point: ", time.get_start_time().time_since_epoch().count());
-    base::print_line();
-
     base::print_line("size of PolymorphicObject: ", sizeof(base::PolymorphicObject));
     base::print_line("size of ReferenceObject: ", sizeof(base::ReferenceObject));
-    base::print_line();
-
-    base::print_line("steady time since epoch: ", base::SteadyTime::get_current_time().time_since_epoch().count());
-    base::print_line("system time since epoch: ", base::SystemTime::get_current_time().time_since_epoch().count());
-    base::print_line("high resolution time since epoch: ", base::HighResolutionTime::get_current_time().time_since_epoch().count());
     base::print_line();
 
     auto begin1 = base::SteadyTime::get_current_time();
@@ -45,8 +36,6 @@ int main()
     auto end3 = base::SteadyTime::get_current_time();
     base::print_line("(catch exception) total time: ", (end3 - begin3).count(), " seconds");
     base::print_line();
-
-    base::print_line("time elapsed since program startup: ", time.get_time_elapsed().count(), "seconds");
 
     return 0;
 }

@@ -50,6 +50,17 @@ protected:
             base::print_line();
         }
 
+        base::print_line("read string from \"1.txt\": ");
+        base::print_line(base::read_string_from_file("1.txt"));
+        base::print_line();
+
+        base::print_line("read bytes from \"1.txt\": ");
+        auto buffer = base::read_bytes_from_file("1.txt");
+        base::print_line("file size: ", buffer.size(), " bytes");
+        std::string content = {buffer.cbegin(), buffer.cend()};
+        base::print_line("file content: \"", content, "\"");
+        base::print_line();
+
         base::print_line("你好，世界");
         _setmode(_fileno(stdout), _O_U8TEXT);
         base::print_line_w(L"你好，世界");
