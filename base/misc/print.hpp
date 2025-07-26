@@ -61,7 +61,7 @@ namespace base
 
     /// @brief 打印一串内容到输出流，但只会换行
     /// @param os 输出流
-    inline void print_line_to_stream(std::wostream &os) { os << '\n'; }
+    inline void print_line_to_stream(std::wostream &os) { os << L'\n'; }
 
     /// @brief 打印一串内容到输出流
     /// @tparam ...Ts 参数类型列表
@@ -75,7 +75,7 @@ namespace base
     /// @param os 输出流
     /// @param ...args 参数
     template <typename... Ts>
-    inline void print_line_to_stream(std::wostream &os, Ts &&...args) { (os << ... << args) << '\n'; }
+    inline void print_line_to_stream(std::wostream &os, Ts &&...args) { (os << ... << args) << L'\n'; }
 
     // 打印到标准输出流
 
