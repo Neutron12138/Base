@@ -41,4 +41,28 @@ namespace base
         return (SteadyTime::get_current_time() - first_call_time).count();
     }
 
+    /// @brief 以死循环的形式等待一定时间，单位：秒
+    /// @param duration 等待时间
+    inline void wait_seconds(double duration)
+    {
+        if (duration <= 0.0)
+            return;
+
+        const auto start_time = SteadyTime::get_current_time();
+        for (auto current_time = SteadyTime::get_current_time();
+             (current_time - start_time).count() < duration;
+             current_time = SteadyTime::get_current_time())
+            ;
+    }
+
+    /// @brief 以死循环的形式等待，直到函数返回true
+    /// @tparam F 函数类型
+    /// @param f 函数
+    template <typename F>
+    inline void wait_until(F f)
+    {
+        while (!f())
+            ;
+    }
+
 } // namespace base

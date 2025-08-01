@@ -16,6 +16,14 @@ int main()
 {
     base::get_elapsed_seconds();
 
+    base::print_line("wait -1 second");
+    base::wait_seconds(-1.0);
+    base::print_line("wait 1 second");
+    base::wait_seconds(1.0);
+    base::print_line("wait until 3 seconds have passed since the program started");
+    base::wait_until([]()
+                     { return base::get_elapsed_seconds() >= 3.0; });
+
     double begin1 = base::get_elapsed_seconds();
     for (std::size_t i = 0; i < 10000; i++)
         base::to_string("This is the ", i, "th cycle");
