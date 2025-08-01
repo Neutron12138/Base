@@ -1,7 +1,6 @@
 #include <iostream>
 #include <io.h>
 #include <fcntl.h>
-#define BASE_DEFINE_FLOAT_TYPE
 #include "../base/base.hpp"
 
 struct A
